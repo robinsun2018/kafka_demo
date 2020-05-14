@@ -1,0 +1,31 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: kafka-demo
+    #============== kafka ===================
+  kafka:
+    bootstrap-servers: 192.168.64.128:9092,192.168.64.129:9092,192.168.64.130:9092
+    topic:
+      user: topic-haha
+    group:
+      id: group-user
+    producer:
+      retries: 0
+      batch-size: 16384 # 每次批量发送消息的数量
+      buffer-memory: 33554432
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer  # 指定消息key和消息体的编解码方式
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer  # 指定消息key和消息体的编解码方式
+
+    consumer:
+      group-id: kafka-demo-group1
+      auto-offset-reset: earliest
+      enable-auto-commit: true
+      auto-commit-interval: 100ms
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer # 指定消息key和消息体的编解码方式
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer # 指定消息key和消息体的编解码方式
+
+
+
+
+
